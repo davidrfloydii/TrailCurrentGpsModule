@@ -1,0 +1,182 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "e43102a4-dd6f-4d32-bd6d-4c06b17a0389")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 35.56 81.28)
+		(size 31.75 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0b0d8537-85d8-48c3-8ee8-bfcf50b44470")
+		(property "Sheetname" "MCU"
+			(at 35.56 80.5684 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 35.56 97.1046 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "trailcurrent-gps-module"
+				(path "/e43102a4-dd6f-4d32-bd6d-4c06b17a0389"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 33.02 53.34)
+		(size 29.21 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "378d6d6e-d650-4477-83a4-df54e9436f51")
+		(property "Sheetname" "CAN"
+			(at 33.02 52.6284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "can.kicad_sch"
+			(at 33.02 69.1646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "trailcurrent-gps-module"
+				(path "/e43102a4-dd6f-4d32-bd6d-4c06b17a0389"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 36.83 109.22)
+		(size 31.75 13.97)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "49f4bb7e-8293-4f83-8e67-ff85c9912e18")
+		(property "Sheetname" "Connectivity"
+			(at 36.83 108.5084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "connectivity.kicad_sch"
+			(at 36.83 123.7746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "trailcurrent-gps-module"
+				(path "/e43102a4-dd6f-4d32-bd6d-4c06b17a0389"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 31.75 25.4)
+		(size 30.48 17.78)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5e03bf2b-dca2-46ef-acb8-5634dd421c83")
+		(property "Sheetname" "Power"
+			(at 31.75 24.6884 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 31.75 43.7646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "trailcurrent-gps-module"
+				(path "/e43102a4-dd6f-4d32-bd6d-4c06b17a0389"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
