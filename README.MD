@@ -1,4 +1,4 @@
-#Enums for GNSS Mode
+# Enums for GNSS Mode
 1.   eGPS              use gps
 2.  eBeiDou           use beidou
 3.   eGPS_BeiDou       use gps + beidou
