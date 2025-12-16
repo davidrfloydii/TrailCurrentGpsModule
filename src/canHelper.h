@@ -7,7 +7,7 @@
 #define CAN_TX 15
 #define POLLING_RATE_MS 100
 static bool driver_installed = false;
-#define CAN_SEND_MESSAGE_LATLON_IDENTIFIER 0x005;
+#define CAN_SEND_MESSAGE_LATLON_IDENTIFIER 0x009;
 #define CAN_SEND_MESSAGE_DATETIME_IDENTIFIER 0x006;
 #define CAN_SEND_MESSAGE_SATNUM_SPEED_COURSE_GNSSMODE_IDENTIFIER 0x007;
 #define CAN_SEND_MESSAGE_ALTITUDE_IDENTIFIER 0x008;
@@ -173,7 +173,7 @@ namespace canHelper
         decodeAltitudeData(altitudeByteAry);
     }
 
-    void sendDateTimeCanMessage()
+    void sendDateTimeCanMessage(uint16_t year, uint8_t month, uint8_t day, uint8_t hour, uint8_t minute, uint8_t second)
     {
         if (!driver_installed)
         {
@@ -183,15 +183,14 @@ namespace canHelper
 
         twai_message_t message;
         message.identifier = CAN_SEND_MESSAGE_DATETIME_IDENTIFIER;
-        message.data_length_code = 8;
-        message.data[0] = dateTimeByteAry[0];
-        message.data[1] = dateTimeByteAry[1];
-        message.data[2] = dateTimeByteAry[2];
-        message.data[3] = dateTimeByteAry[3];
-        message.data[4] = dateTimeByteAry[4];
-        message.data[5] = dateTimeByteAry[5];
-        message.data[6] = dateTimeByteAry[6];
-        message.data[7] = dateTimeByteAry[7];
+        message.data_length_code = 7;
+        message.data[0] = (year >> 8) & 0xFF;
+        message.data[1] = year & 0xFF;
+        message.data[2] = month;
+        message.data[3] = day;
+        message.data[4] = hour;
+        message.data[5] = minute;
+        message.data[6] = second;
         message.flags = TWAI_MSG_FLAG_NONE;
 
         // Transmit message
@@ -205,25 +204,29 @@ namespace canHelper
         }
     }
 
-    void sendLatLonCanMessage()
+    void sendLatLonCanMessage(float latitude, float longitude)
     {
         if (!driver_installed)
         {
             debugln("TWAI driver not installed, cannot send message");
             return;
         }
+        byte latBytes[4];
+        byte lonBytes[4];
+        mempcpy(latBytes,&latitude,sizeof(latitude));
+        memcpy(lonBytes,&longitude,sizeof(longitude));
 
         twai_message_t message;
         message.identifier = CAN_SEND_MESSAGE_LATLON_IDENTIFIER;
         message.data_length_code = 8;
-        message.data[0] = latLonByteAry[0];
-        message.data[1] = latLonByteAry[1];
-        message.data[2] = latLonByteAry[2];
-        message.data[3] = latLonByteAry[3];
-        message.data[4] = latLonByteAry[4];
-        message.data[5] = latLonByteAry[5];
-        message.data[6] = latLonByteAry[6];
-        message.data[7] = latLonByteAry[7];
+        message.data[0] = latBytes[0];
+        message.data[1] = latBytes[1];
+        message.data[2] = latBytes[2];
+        message.data[3] = latBytes[3];
+        message.data[4] = lonBytes[0];
+        message.data[5] = lonBytes[1];
+        message.data[6] = lonBytes[2];
+        message.data[7] = lonBytes[3];
         message.flags = TWAI_MSG_FLAG_NONE;
 
         // Transmit message
@@ -319,8 +322,8 @@ namespace canHelper
         formatAltitudeData(currentAltitude);
 
         sendSatSpeedCourseAndModeMessage(currentNumSatUsed, currentSpeedOverGround, currentGnssMode);
-        sendLatLonCanMessage();
-        sendDateTimeCanMessage();
+        sendLatLonCanMessage(currentLatitude, currentLongitude);
+        sendDateTimeCanMessage(currentYear, currentMonth, currentDay, currentHour, currentMinute, currentSecond);
         sendSatSpeedCourseAndModeMessage(currentNumSatUsed, currentSpeedOverGround, currentGnssMode);
         sendAltitudeDate(currentAltitude);
         return;
